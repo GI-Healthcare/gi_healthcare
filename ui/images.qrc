@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>Images/vegetable/onion.jpg</file>
+    <file>Images/icons/cooking.png</file>
+    <file>Images/foodPics/noodles.jpg</file>
+    <file>Images/icons/secondIcon.jpg</file>
+    <file>Images/logo/GIHealthcareLogo.png</file>
+  </qresource>
+</RCC>

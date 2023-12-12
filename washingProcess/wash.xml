@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+    stepper1_loc = 0000 to 5000
+    stepper2_loc = 0000 to 1500
+    stepper3_loc = 0000 to 1000
+
+    stepper command = ["S", stepper1_loc, stepper2_loc, stepper3_loc] 
+  
+    ## tags to be used to write recipe
+    <stepper device="S" stepper1_loc="4digits" stepper2_loc="4digits" stepper3_loc="4digits"></stepper>
+-->
+
+<start>
+    <wash name = "washSteps">
+
+        <!-- ******************** Gantry goes to washer *********************** -->
+        <stepper device="S" stepper1_loc="1740" stepper2_loc="0300"></stepper>
+        <delay device="D" seconds="5"></delay>
+
+        <!-- ******************** shaker rotates 180 *********************** -->
+        <stepper device="S" stepper1_loc="1000" stepper2_loc="0000"></stepper>
+        <delay device="D" seconds="5"></delay> 
+        
+        <!-- ******************** water pump on for 20 sec and off *********************** -->
+        <pump device="P" status="1"></pump>
+        <delay device="D" seconds="20"></delay>
+        
+        <pump device="P" status="0"></pump>
+        <delay device="D" seconds="3"></delay>
+
+        <!-- ******************** shaker rotates 0 *********************** -->
+        <stepper device="S" stepper1_loc="1000" stepper2_loc="0000"></stepper>
+        <delay device="D" seconds="5"></delay> 
+
+        <!-- ******************** Gantry goes to washer *********************** -->
+        <stepper device="S" stepper1_loc="1740" stepper2_loc="0300"></stepper>
+        <delay device="D" seconds="5"></delay>
+
+        <!-- ******************** Gantry goes to washer *********************** -->
+        <stepper device="S" stepper1_loc="1740" stepper2_loc="0000"></stepper>
+        <delay device="D" seconds="5"></delay>
+
+        <!-- ******************** Gantry goes to washer *********************** -->
+        <stepper device="S" stepper1_loc="0000" stepper2_loc="0000"></stepper>
+        <delay device="D" seconds="5"></delay>
+
+    </wash>
+</start>

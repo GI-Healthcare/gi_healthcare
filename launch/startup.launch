@@ -1,0 +1,15 @@
+<launch>
+
+	<!--python nodes start-->
+	<node pkg="gi_healthcare" type="userInterfaceNode.py" name="startUI"/>
+
+	<node pkg="gi_healthcare" type="nodeCommander.py" name="statusCommands"/>
+
+	<node pkg="gi_healthcare" type="stepperInduction.py" name="stepperAndInductionCommands" output="screen"/>
+
+	<node pkg="gi_healthcare" type="relay.py" name="relayController" output="screen"/>
+
+	<!--<node pkg="gi_healthcare" type="arduinoRun.py" name="arduinoController" output="screen"/>
+	python nodes ends-->
+
+</launch>

@@ -1,0 +1,76 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+    stepper1_loc = 0000 to 5000
+    stepper2_loc = 0000 to 1500
+    stepper3_loc = 0000 to 1000
+
+    stepper command = ["S", stepper1_loc, stepper2_loc, stepper3_loc] 
+    
+    value = 10 : unlock/lock
+    value = 11 : on/off 
+    value = 00 to 09 : increase temperature
+    value = -9 to 00 : decrease temperature
+
+    induction = ["I", value] : 
+
+    ## tags to be used to write recipe
+    <stepper device="S" stepper1_loc="4digits" stepper2_loc="4digits" stepper3_loc="4digits"></stepper>
+    
+    <induction device="I" value="always 2 characters"></induction>
+    
+    <delay seconds=" "></delay>
+    
+    <chopper device="C" oscillations="how many oscillations "></chopper>
+    
+    <oil device="O" ml="millileter"></oil>
+    
+    <water device="W" ml=millileter"></water>
+    
+    <delivery device="d" status="1/0"></delivery>
+    
+    <fan device="F" status="1/0"></fan>
+-->
+
+<start>
+    
+    <recipe name = "Noodles">
+
+        <!-- ******************** Start cooking button pressed *********************** -->
+        
+        <!-- ******************** Lift goes down *********************** -->
+        <stepper device="S" stepper1_loc="5000" stepper2_loc="0000"></stepper>
+        
+        <!-- ******************** Wait till onion put *********************** -->
+        <delay device="D" seconds="20"></delay>
+
+        <!-- ******************** Wait till onion put *********************** -->
+        <induction device="d" slot="0"></induction>
+
+        <!-- ******************** Extraction fan on *********************** -->
+        <fan device="F" status="1"></fan>
+        <delay device="D" seconds="5"></delay>
+
+        <!-- ******************** Gantry goes to water tap *********************** -->
+        <stepper device="S" stepper1_loc="1740" stepper2_loc="0850"></stepper>
+        <delay device="D" seconds="5"></delay>
+
+        <!-- ******************** Water tap turn on *********************** -->
+        <water device="W" status="1"></water>
+        <delay device="D" seconds="30"></delay>
+
+        <!-- ******************** Induction unlock on with temp 9 *********************** -->
+        <induction device="I" value="10"></induction>
+        <delay device="D" seconds="3"></delay>
+
+        <induction device="I" value="11"></induction>
+        <delay device="D" seconds="3"></delay>
+
+        <induction device="I" value="09"></induction>
+       
+
+        <!-- ******************** Extraction fan off *********************** -->
+        <fan device="F" status="0"></fan>
+        <delay device="D" seconds="5"></delay>
+
+    </recipe>
+</start>
